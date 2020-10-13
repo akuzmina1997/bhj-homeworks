@@ -6,7 +6,7 @@
 let holeWithMole = document.getElementsByClassName('hole');
 let killedMole = document.getElementById('dead');
 let gameLost = document.getElementById('lost');
-let clickHole = index => document.getElementById('hole${index}');
+let clickHole = index => document.getElementById(`hole${index}`);
 let reset = () => {localStorage.textContent = 0; killedMole.textContent = 0};
 
 for (let i = 1; i < holeWithMole.length; i++) {
