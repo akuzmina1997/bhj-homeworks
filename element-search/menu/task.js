@@ -1,53 +1,32 @@
 "use strict";
 
-//const menuActive = document.getElementsByClassName('menu_active');
-const menuLink = document.getElementsByClassName('menu__link');
-const list = menu.length;
+const menuLink = document.getElementsByClassName("menu__link");
+const menuLength = menuLink.length;
 
-function menuAll() {
-    let menu = document.querySelectorAll('ul, li');
-    for (let i = 0; i < subMenu.length; i++) {
-        menu[i].className = 'menu menu_sub';
+function closeMenus() {
+    const menuElements = document.querySelectorAll("li ul");
+    for (let i = 0; i < menuElements.length; i++) {
+        menuElements[i].className = "menu menu_sub";
     }
 }
 
-function menuLink(menuDropdown) {
-    if (menuDropdown.classList.contains('menu_active')) {
-        menuDropdown.classList.remove('menu_active');
-    } else {
-        menuDropdown.classList.add('menu_active')
-        menuAll();
+function changeSubmenuStatus(menuLi) {
+    if (menuLi.classList.contains("menu_active")) 
+        menuLi.classList.remove("menu_active");
+
+    else {
+        menuLi.classList.add("menu_active");
     }
 }
 
-for (let i = 0; i < list; i++) {
-    menu[i].onclick = () => {
-        let listMain = menu[i].parentElement;
-        listMain = listMain.getElementsByTagName("ul")[0];
+for (let i = 0; i < menuLength; i++) {
+    menuLink[i].onclick = () => {
+        const menuParentLi = menuLink[i].parentElement;
+        menuLi = menuParentLi.getElementsByTagName("ul")[0];
 
-        if (menuDropdown) {
-            menuLink(menuDropdown);
+        if (menuLi) {
+            changeSubmenuStatus(menuLi);
             return false;
         }
     }
 }
-
-//for(let i = 0; i < menuLink.length; i++) {
-    //if(menuLink[i].nextElementSibling != null) {
-        //menuLink[i].onclick = function() {
-            //closeMenu();
-            //for (let b = 0; b < menuActive.length; b++)  {
-                //if(menuActive[b] !== undefined) {
-                    //menuActive[b].classList.remove('menu_active');
-                //}
-            //}
-            //return false;
-        //}
-    //}
-//}
-
-//function closeMenu(){
-    //for (var i = 0; i < menuActive.length; i++) {
-        //menuActive[i].classList.remove('menu_active');
-    //}
-//}
