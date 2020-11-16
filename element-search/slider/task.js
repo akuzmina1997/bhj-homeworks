@@ -11,21 +11,26 @@ let index = slider.findIndex(element => {
 
 arrowRight.addEventListener('click', ()=>{
     slider[index].classList.remove('slider__item_active');
-    (index === slider.length - 1)?
-        (index = 0,
-        slider[index].classList.add('slider__item_active')):
-        (slider[index + 1].classList.add('slider__item_active'));
-    index++;
-})
+    index = index === slider.length - 1 ? 0 : index + 1; 
+    slider[index].classList.add('slider__item_active'); 
+
+    //(index === slider.length - 1)?
+        //(index = 0,
+        //slider[index].classList.add('slider__item_active')):
+        //(slider[index + 1].classList.add('slider__item_active'));
+    //index++;
+});
 
 arrowLeft.addEventListener('click', ()=>{
     slider[index].classList.remove('slider__item_active');
-    index--;
-    (index === 0)?
-        (index = slider.length - 1,
-        slider[index].classList.add('slider__item_active')):
-        (slider[index].classList.add('slider__item_active'));
-})
+    index = index === 0 ? slider.length - 1 : index - 1; 
+    slider[index].classList.add('slider__item_active'); 
+    //index--;
+    //(index === 0)?
+        //(index = slider.length - 1,
+        //slider[index].classList.add('slider__item_active')):
+        //(slider[index].classList.add('slider__item_active'));
+});
 
 //const sliderArrow = document.getElementsByClassName("slider__arrow");
 //const sliderItems = Array.from(document.querySelectorAll(".slider__items div"));
