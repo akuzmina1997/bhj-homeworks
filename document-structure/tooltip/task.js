@@ -1,7 +1,8 @@
 "use strict";
 
 const body = document.querySelector('body');
-const tooltip = document.querySelector('.tooltip');
+const tooltip = document.querySelector('div');
+tooltip.className = 'tooltip tooltip_active';
 const hasTooltip = Array.from(document.querySelectorAll('.has-tooltip'))
 
 function placeTooltip(elem) {
@@ -12,20 +13,29 @@ function placeTooltip(elem) {
     };
   }
 
+  hasTooltip.forEach(elem =>{
+    elem.addEventListener('click', (event) =>{
+      //event.preventDefault();
+      getTooltip(event);
+    });
+
 function getTooltip(event) {
     tooltip.classList.toggle('tooltip_active');
     tooltip.innerText = event.target.title;
 
+    if (this === tooltip.parentElement)
+        tooltip.classList.toggle('tooltip_active');
+
     let coords = placeTooltip(event.target);
     tooltip.style.left = coords.left + "px";
-    tooltip.style.top = coords.top + 18 + "px";
+    tooltip.style.top = coords.top + 20 + "px";
     
     event.target.after(tooltip);
-}
 
-hasTooltip.forEach(element =>{
-    element.addEventListener('click', (event) =>{
-        event.preventDefault();
-        getTooltip(event);
-    })
-})
+    event.preventDefault();
+
+    tooltip.innerText = this.title;
+    this.appendChild(tooltip);
+
+  }
+});

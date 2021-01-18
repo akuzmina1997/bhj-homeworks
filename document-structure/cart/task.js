@@ -19,10 +19,10 @@ for (let i = 0; i < addButtons.length; i++) {
     addButtons[i].addEventListener('click', function() {
         let product = Array.from(productsInCart).find(item => item.dataset.id == buttons[i].dataset.id);
 
-        if(product !== undefined) {
+        if(product) {
                   let cartProductCount = product.querySelector('.cart__product-count').textContent;
                   let totalCount = +cartProductCount + +quantity[i].textContent;
-                  return product.querySelector('.cart__product-count').textContent = totalCount;
+                  //return product.querySelector('.cart__product-count').textContent = totalCount;
               }
 
         cart.innerHTML +=
